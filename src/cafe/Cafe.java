@@ -14,14 +14,22 @@ public class Cafe {
     /**
      * @param args the command line arguments
      */
-    
-    boolean crearNuevaBebida()
-    {
-        return true;
-    }
-    
+       
     public static void main(String[] args) {
         // TODO code application logic here
+        String cadena = "cafe, 1, 2";
+        String[] arrCaf = cadena.split(",");
+        for(String a : arrCaf)
+            System.out.println(a);
+        
+        if(arrCaf == null)
+        {
+            System.out.println("vacio");
+        }
+        else
+        {
+            System.out.println("cafe agregado");
+        }
         
     }
     

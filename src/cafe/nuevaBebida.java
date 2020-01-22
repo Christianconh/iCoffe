@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cafe;
 
 import java.util.regex.Pattern;
@@ -12,6 +7,8 @@ import java.util.regex.Pattern;
  * @author christian
  */
 public class nuevaBebida {
+    //String Cadena;
+    
     public static boolean nombreBebidaNum(String nombre)
     {
         int nomInv;
@@ -63,14 +60,98 @@ public class nuevaBebida {
             tamano = Integer.parseInt(tam);
             if(tamano >=1 && tamano<=48)
             {
-                
+                System.out.println("tamaño:" + tamano);
+                return true;
+            }
+            else
+            {
+                System.out.println("Solo valores 1 a 48");
             }
         } 
-        catch (Exception ex) {
-            
+        catch (NumberFormatException ex) {
+            System.out.println("Ingresar valor entero");
+            return false;
         }
-        
         return false;
     }
     
+    public static boolean verificarCadena(String cadena)
+    {
+   
+            String[] arrCaf = cadena.split(",", 5);
+            String nombre = arrCaf[0];
+            
+            
+            /*for(String a : arrCaf)
+            {
+                System.out.println(a);
+            }*/
+            if(arrCaf.length>1)
+            {
+                System.out.println("La cadena está dividida por comas");
+                return true;
+                
+            }
+            else
+            {
+                System.out.println("la cadena NO esta divida por comas");
+                return false;
+            }
+
+    }
+    
+    public static boolean verificarPrimerlugar(String cadena)
+    {
+        String[] arrCaf = cadena.split(",", 5);
+         if(nuevaBebida.nombreBebidaNum(arrCaf[0]) == false)
+            {
+                System.out.println("Primer valor no corresponde al nombre");
+                return false;
+            }
+         else
+         {
+             System.out.println("Primer valor es el nombre");
+             return true;
+         }
+    }
+    
+    public static boolean verificarTamanos(String cadena)
+    {
+        String[] arrCaf = cadena.split(",");
+            
+        if(arrCaf.length >=2 && arrCaf.length <=6)
+        {
+            System.out.println("Valores correctos");
+            return true;
+        }
+        else
+        {
+            System.out.println("Solo se permiten de uno a cinco valores");
+            return false;
+        }
+    }
+    
+    public static boolean verificarOrdenTam(String cadena)
+    {
+        int aux = Integer.MIN_VALUE;
+        String[] arrCaf = cadena.split(",");
+            
+        if(arrCaf.length >=2 && arrCaf.length <=6)
+        {
+            for(int i=1; i<arrCaf.length; i++)
+            {
+                if(aux < Integer.parseInt(arrCaf[i]))
+                        {
+                            aux=Integer.parseInt(arrCaf[i]);
+                        }
+                else
+                {
+                    System.out.println("Los valores deben ser ingresados de menor a mayor");
+                    return false;
+                }
+            }
+                            
+        }
+        return true;
+    }
 }
